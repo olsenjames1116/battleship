@@ -7,6 +7,10 @@ export default class Ship {
     }
 
     hit() {
+        this.hits += 1;
+    }
+
+    isSunk() {
         
     }
 }
