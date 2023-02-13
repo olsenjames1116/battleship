@@ -5,4 +5,8 @@ export default class Ship {
         this.sunk = sunk;
         this.coordinates = coordinates;
     }
+
+    hit() {
+        
+    }
 }
