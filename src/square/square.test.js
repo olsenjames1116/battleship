@@ -31,3 +31,9 @@ test('selectSquare sets selected to true', () => {
 test('Square has addShip method', () => {
     expect(typeof square['addShip']).toBe('function');
 });
+
+test('addShip sets ship to true', () => {
+    square.addShip();
+    
+    expect(square.ship).toBe(true);
+});
