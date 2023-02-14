@@ -22,6 +22,12 @@ test('Square has selectSquare method', () => {
     expect(typeof square['selectSquare']).toBe('function');
 });
 
+test('selectSquare sets selected to true', () => {
+    square.selectSquare();
+
+    expect(square.selected).toBe(true);
+});
+
 test('Square has addShip method', () => {
     expect(typeof square['addShip']).toBe('function');
 });
