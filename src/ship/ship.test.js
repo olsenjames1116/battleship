@@ -22,9 +22,15 @@ test('Ship has coordinates property', () => {
     expect(ship.hasOwnProperty('coordinates')).toBe(true);
 });
 
-test('Ship has hit method', () => {
+test('Ship has isHit method', () => {
     expect(typeof ship['isHit']).toBe("function");
 });
+
+test('isHit adds a hit to the hit property', () => {
+    ship.isHit();
+    
+    expect(ship.hits).toBe(1);
+})
 
 test('Ship has an isSunk method', () => {
     expect(typeof ship['isSunk']).toBe("function");
