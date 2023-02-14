@@ -4,4 +4,12 @@ export default class Square {
         this.selected = selected;
         this.ship = ship;
     }
+
+    selectSquare() {
+        this.selected = true;
+    }
+
+    addShip() {
+        this.ship = true;
+    }
 }

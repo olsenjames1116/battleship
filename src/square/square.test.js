@@ -17,3 +17,11 @@ test('Square has selected property', () => {
 test('Square has ship property', () => {
     expect(square.hasOwnProperty('ship')).toBe(true);
 });
+
+test('Square has selectSquare method', () => {
+    expect(typeof square['selectSquare']).toBe('function');
+});
+
+test('Square has addShip method', () => {
+    expect(typeof square['addShip']).toBe('function');
+});
