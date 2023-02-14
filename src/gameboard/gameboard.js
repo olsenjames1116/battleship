@@ -67,8 +67,8 @@ export default class Gameboard{
                 square.ship = true;
             }
 
-            globalCoordinate.push([xCoordinate, yCoordinate]);
-            globalCoordinate.push([xCoordinate, yCoordinate + 1]);
+            // globalCoordinate.push([xCoordinate, yCoordinate]);
+            // globalCoordinate.push([xCoordinate, yCoordinate + 1]);
         });
     }
 
@@ -98,9 +98,9 @@ export default class Gameboard{
     }
 }
 
-let globalCoordinate = [];
+// let globalCoordinate = [];
 
 const gameboard = new Gameboard();
 const array = gameboard.placeShips();
-gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 1]));
-gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 2]));
+// gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 1]));
+// gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 2]));
