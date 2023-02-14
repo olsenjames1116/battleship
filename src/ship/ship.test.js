@@ -28,7 +28,7 @@ test('Ship has isHit method', () => {
 
 test('isHit adds a hit to the hit property', () => {
     ship.isHit();
-    
+
     expect(ship.hits).toBe(1);
 })
 
@@ -38,4 +38,10 @@ test('Ship has an isSunk method', () => {
 
 test('isSunk returns a boolean', () => {
     expect(typeof ship.isSunk()).toBe('boolean');
+});
+
+test('isSunk returns true if the length and hits are equal', () => {
+    const ship2 = new Ship();
+
+    expect(ship2.isSunk()).toBe(true);
 });
