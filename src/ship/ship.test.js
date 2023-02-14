@@ -1,6 +1,6 @@
 import Ship from './ship.js';
 
-const ship = new Ship(2);
+const ship = new Ship();
 
 test('Returns an object', () => {
     expect(typeof ship).toEqual('object');
