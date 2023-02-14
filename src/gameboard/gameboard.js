@@ -67,12 +67,17 @@ export default class Gameboard{
                 square.ship = true;
             }
 
-            globalCoordinate = [xCoordinate, yCoordinate]
+            globalCoordinate.push([xCoordinate, yCoordinate]);
+            globalCoordinate.push([xCoordinate, yCoordinate + 1]);
         });
     }
 
     findShip(coordinates) {
         return this.ships.find((ship) => ship.coordinates.includes(coordinates));
+    }
+
+    reportSink(shipType) {
+        console.log(`${shipType} has been sunk`);
     }
 
     receiveAttack(coordinates) {
@@ -81,8 +86,9 @@ export default class Gameboard{
         if(square.selected === false) {
             if(square.ship === true) {
                 const ship = this.findShip(coordinates);
-                console.log(ship);
-                // Call isHit method in Ship
+                ship.isHit();
+
+                if(ship.isSunk()) this.reportSink(ship.type);
             } else {
                 // Display a miss
             }
@@ -92,8 +98,9 @@ export default class Gameboard{
     }
 }
 
-let globalCoordinate;
+let globalCoordinate = [];
 
 const gameboard = new Gameboard();
 const array = gameboard.placeShips();
-gameboard.receiveAttack(JSON.stringify(globalCoordinate));
+gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 1]));
+gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 2]));
