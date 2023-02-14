@@ -45,3 +45,9 @@ test('isSunk returns true if the length and hits are equal', () => {
 
     expect(ship2.isSunk()).toBe(true);
 });
+
+test('isSunk returns false if the length and hits are not equal', () => {
+    ship.length = 2;
+
+    expect(ship.isSunk()).toBe(false);
+});
