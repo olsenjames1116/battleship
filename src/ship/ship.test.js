@@ -10,8 +10,8 @@ test('Ship has length property', () => {
     expect(ship.hasOwnProperty('length')).toBe(true);
 });
 
-test('Ship has name property', () => {
-    expect(ship.hasOwnProperty('name')).toBe(true);
+test('Ship has type property', () => {
+    expect(ship.hasOwnProperty('type')).toBe(true);
 });
 
 test('Ship has hits property', () => {
