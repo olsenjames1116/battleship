@@ -1,8 +1,10 @@
 import Square from '../square/square.js';
+import Ship from '../ship/ship.js';
 
 export default class Gameboard{
     constructor() {
-        this.array = this.buildBoard();
+        this.squares = this.buildBoard();
+        this.ships = this.buildShips();
     }
 
     buildBoard() {
@@ -18,8 +20,23 @@ export default class Gameboard{
         return board;
     }
 
+    buildShips() {
+        const carrier = new Ship(5);
+        const battleship = new Ship(4);
+        const cruiser = new Ship(3);
+        const submarine = new Ship(3);
+        const destroyer = new Ship(2);
+
+        return [ carrier, battleship, cruiser, submarine, destroyer ];
+    }
+
     placeShips() {
-        
+        this.ships.forEach((ship) => {
+
+            for(let i = 0; i < ship.length; i++) {
+
+            }
+        });
     }
 }
 
