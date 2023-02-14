@@ -9,3 +9,7 @@ test('Returns an object', () => {
 test('Gameboard has an array property', () => {
     expect(Array.isArray(gameboard.array)).toBe(true);
 });
+
+test('Gameboard has a placeShips method', () => {
+    expect(typeof gameboard['placeShips']).toBe('function');
+});

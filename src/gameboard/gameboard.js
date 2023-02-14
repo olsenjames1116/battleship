@@ -17,6 +17,10 @@ export default class Gameboard{
 
         return board;
     }
+
+    placeShips() {
+        
+    }
 }
 
 const gameboard = new Gameboard();
