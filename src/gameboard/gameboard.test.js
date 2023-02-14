@@ -25,3 +25,7 @@ test('Ships property is of type array', () => {
 test('Gameboard has a placeShips method', () => {
     expect(typeof gameboard['placeShips']).toBe('function');
 });
+
+test('Gameboard has a receiveAttack method', () => {
+    expect(typeof gameboard['receiveAttack']).toBe('function');
+});

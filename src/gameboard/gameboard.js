@@ -20,6 +20,10 @@ export default class Gameboard{
         return board;
     }
 
+    buildShips() {
+        return [ new Ship(5, 'carrier'), new Ship(4, 'battleship'), new Ship(3, 'cruiser'), new Ship(3, 'submarine'), new Ship(2, 'destroyer') ];
+    }
+
     findLegalSquares(ship) {
         let xCoordinate;
         let yCoordinate;
@@ -31,14 +35,9 @@ export default class Gameboard{
             yCoordinate = Math.round(Math.random() * 9);
             direction = Math.round(Math.random());
             squaresOccupied = this.checkSquaresAreOccupied(xCoordinate, yCoordinate, direction, ship.length);
-            console.log(`${ship.type} x: ${xCoordinate}, y: ${yCoordinate} / ${direction}`);
         } while(squaresOccupied || (direction === 0 && yCoordinate + ship.length > 9) || (direction === 1 && xCoordinate + ship.length > 9))
 
         return { xCoordinate, yCoordinate, direction };
-    }
-
-    buildShips() {
-        return [ new Ship(5, 'carrier'), new Ship(4, 'battleship'), new Ship(3, 'cruiser'), new Ship(3, 'submarine'), new Ship(2, 'destroyer') ];
     }
 
     findSquare(searchCoordinates) {
@@ -64,13 +63,37 @@ export default class Gameboard{
 
             for(let i = 0; i < ship.length; i++) {
                 const square = direction === 0 ? this.findSquare(`[${xCoordinate},${yCoordinate + i}]`) : this.findSquare(`[${xCoordinate + i},${yCoordinate}]`);
-
+                ship.coordinates.push(JSON.stringify(square.coordinates));
                 square.ship = true;
             }
-            console.log(`x: ${xCoordinate}, y: ${yCoordinate} / ${direction}`);
+
+            globalCoordinate = [xCoordinate, yCoordinate]
         });
+    }
+
+    findShip(coordinates) {
+        return this.ships.find((ship) => ship.coordinates.includes(coordinates));
+    }
+
+    receiveAttack(coordinates) {
+        const square = this.findSquare(coordinates);
+
+        if(square.selected === false) {
+            if(square.ship === true) {
+                const ship = this.findShip(coordinates);
+                console.log(ship);
+                // Call isHit method in Ship
+            } else {
+                // Display a miss
+            }
+        }
+
+        square.selected = true;
     }
 }
 
+let globalCoordinate;
+
 const gameboard = new Gameboard();
-gameboard.placeShips();
+const array = gameboard.placeShips();
+gameboard.receiveAttack(JSON.stringify(globalCoordinate));

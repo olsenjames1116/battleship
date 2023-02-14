@@ -1,5 +1,5 @@
 export default class Ship {
-    constructor(length, type, hits = 0, sunk = false, coordinates = null) {
+    constructor(length, type, hits = 0, sunk = false, coordinates = []) {
         this.length = length;
         this.type = type;
         this.hits = hits;
