@@ -21,13 +21,7 @@ export default class Gameboard{
     }
 
     buildShips() {
-        const carrier = new Ship(5);
-        const battleship = new Ship(4);
-        const cruiser = new Ship(3);
-        const submarine = new Ship(3);
-        const destroyer = new Ship(2);
-
-        return [ carrier, battleship, cruiser, submarine, destroyer ];
+        return [ new Ship(5, 'carrier'), new Ship(4, 'battleship'), new Ship(3, 'cruiser'), new Ship(3, 'submarine'), new Ship(2, 'destroyer') ];
     }
 
     placeShips() {
