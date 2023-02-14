@@ -29,3 +29,7 @@ test('Ship has hit method', () => {
 test('Ship has an isSunk method', () => {
     expect(typeof ship['isSunk']).toBe("function");
 });
+
+test('isSunk returns a boolean', () => {
+    expect(typeof ship.isSunk()).toBe('boolean');
+});
