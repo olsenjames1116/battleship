@@ -41,7 +41,7 @@ test('isSunk returns a boolean', () => {
 });
 
 test('isSunk returns true if the length and hits are equal', () => {
-    const ship2 = new Ship();
+    const ship2 = new Ship(0);
 
     expect(ship2.isSunk()).toBe(true);
 });
