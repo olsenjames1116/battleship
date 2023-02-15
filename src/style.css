@@ -13,3 +13,7 @@ div.gameboard {
 div.grid {
   outline: 1px solid black;
 }
+
+div#computer > div.grid:hover {
+  background-color: gray;
+}
