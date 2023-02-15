@@ -80,7 +80,7 @@ export default class Gameboard{
         console.log(`${shipType} has been sunk`);
     }
 
-    receiveAttack(coordinates) {
+    receiveAttack(coordinates, player) {
         const square = this.findSquare(JSON.stringify(coordinates));
 
         if(square.selected === false) {
@@ -88,7 +88,10 @@ export default class Gameboard{
                 const ship = this.findShip(JSON.stringify(coordinates));
                 ship.isHit();
 
-                if(ship.isSunk()) this.reportSink(ship.type);
+                if(ship.isSunk()) {
+                    this.reportSink(ship.type);
+                    player.sinkShip();
+                }
             } else {
                 // Display a miss
             }

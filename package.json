@@ -9,7 +9,6 @@
     "test": "jest",
     "watch": "jest --watch"
   },
-  "type": "module",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/olsenjames1116/battleship.git"
@@ -25,6 +24,7 @@
     "@babel/core": "^7.20.12",
     "@babel/preset-env": "^7.20.2",
     "babel-loader": "^9.1.2",
+    "css-loader": "^6.7.3",
     "eslint": "^8.34.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-node": "^4.1.0",
@@ -36,6 +36,7 @@
     "eslint-plugin-react": "^7.32.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "prettier": "^2.8.4",
+    "style-loader": "^3.3.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",
     "webpack-dev-server": "^4.11.1"

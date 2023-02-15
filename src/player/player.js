@@ -3,6 +3,11 @@ import Gameboard from '../gameboard/gameboard.js';
 export default class Player {
     constructor(type) {
         this.type = type;
+        this.ships = 5;
+    }
+
+    sinkShip() {
+        this.ships -= 1;
     }
 
     randomMove(gameboard) {
