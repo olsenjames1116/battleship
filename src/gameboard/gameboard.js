@@ -81,11 +81,11 @@ export default class Gameboard{
     }
 
     receiveAttack(coordinates) {
-        const square = this.findSquare(coordinates);
+        const square = this.findSquare(JSON.stringify(coordinates));
 
         if(square.selected === false) {
             if(square.ship === true) {
-                const ship = this.findShip(coordinates);
+                const ship = this.findShip(JSON.stringify(coordinates));
                 ship.isHit();
 
                 if(ship.isSunk()) this.reportSink(ship.type);

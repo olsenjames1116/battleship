@@ -9,3 +9,7 @@ test('Returns an object', () => {
 test('Player has a type property', () => {
     expect(player.hasOwnProperty('type')).toBe(true);
 });
+
+test('Player has a randomMove method', () => {
+    expect(typeof player['randomMove']).toBe('function');
+});
