@@ -16,6 +16,9 @@ export default class Game {
         playerBoard.placeShips();
         computerBoard.placeShips();
 
+        const dom = new Dom();
+        dom.loadBoards();
+        
         this.endGame();
     }
 }

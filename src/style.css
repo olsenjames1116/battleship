@@ -1,0 +1,15 @@
+div.content {
+  display: flex;
+  gap: 50px;
+}
+
+div.gameboard {
+  display: grid;
+  grid-template-columns: repeat(10, 1fr);
+  width: 500px;
+  height: 500px;
+}
+
+div.grid {
+  outline: 1px solid black;
+}
