@@ -64,7 +64,7 @@ export default class Gameboard{
             for(let i = 0; i < ship.length; i++) {
                 const square = direction === 0 ? this.findSquare(`[${xCoordinate},${yCoordinate + i}]`) : this.findSquare(`[${xCoordinate + i},${yCoordinate}]`);
                 ship.coordinates.push(JSON.stringify(square.coordinates));
-                square.ship = true;
+                square.addShip();
             }
 
             // globalCoordinate.push([xCoordinate, yCoordinate]);
@@ -82,6 +82,10 @@ export default class Gameboard{
 
     getSquareAtIndex(index) {
         return this.squares[index];
+    }
+
+    findSquareIndex(square) {
+        return this.squares.indexOf(square);
     }
 
     receiveAttack(coordinates, player) {
@@ -103,7 +107,7 @@ export default class Gameboard{
             hit = false;
         }
 
-        square.selected = true;
+        square.selectSquare();
 
         return hit;
     }

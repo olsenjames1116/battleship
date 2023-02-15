@@ -19,6 +19,7 @@ export default class Game {
         const dom = new Dom();
         dom.loadBoards();
 
+        const playerGrid = Array.from(document.querySelectorAll('div#player>div.grid'));
         const computerGrid = Array.from(document.querySelectorAll('div#computer>div.grid'));
         computerGrid.forEach((grid) => {
             grid.addEventListener('click', (event) => {
@@ -26,9 +27,14 @@ export default class Game {
                 const square = computerBoard.getSquareAtIndex(index);
 
                 if(square.selected === false) {
-                    const hit = computerBoard.receiveAttack(square.coordinates, computer.type);
+                    let hit = computerBoard.receiveAttack(square.coordinates, computer);
 
                     hit ? grid.classList.add('hit') : grid.classList.add('miss');
+
+                    const computerMove = computer.randomMove(playerBoard, player);
+                    const squareIndex = playerBoard.findSquareIndex(computerMove.square);
+                    
+                    computerMove.hit ? playerGrid[squareIndex].classList.add('hit') : playerGrid[squareIndex].classList.add('miss');
                 }
             });
         });

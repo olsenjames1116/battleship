@@ -1,5 +1,3 @@
-import Gameboard from '../gameboard/gameboard.js';
-
 export default class Player {
     constructor(type) {
         this.type = type;
@@ -19,10 +17,8 @@ export default class Player {
             square = gameboard.findSquare(JSON.stringify(move));
         } while(square.selected === true)
         
-        gameboard.receiveAttack(move);
+        const hit = gameboard.receiveAttack(move);
+
+        return { hit, square };
     }
 }
-
-const gameboard = new Gameboard();
-const player = new Player('player');
-player.randomMove(gameboard);
