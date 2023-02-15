@@ -80,6 +80,10 @@ export default class Gameboard{
         console.log(`${shipType} has been sunk`);
     }
 
+    getSquareAtIndex(index) {
+        return this.squares[index];
+    }
+
     receiveAttack(coordinates, player) {
         const square = this.findSquare(JSON.stringify(coordinates));
 

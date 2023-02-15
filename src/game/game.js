@@ -18,7 +18,16 @@ export default class Game {
 
         const dom = new Dom();
         dom.loadBoards();
-        
+
+        const computerGrid = Array.from(document.querySelectorAll('div#computer>div.grid'));
+        computerGrid.forEach((grid) => {
+            grid.addEventListener('click', (event) => {
+                const index = computerGrid.indexOf(event.target);
+                const square = computerBoard.getSquareAtIndex(index);
+                console.log(square);
+            });
+        });
+
         this.endGame();
     }
 }
