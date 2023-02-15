@@ -86,7 +86,9 @@ export default class Gameboard{
 
     receiveAttack(coordinates, player) {
         const square = this.findSquare(JSON.stringify(coordinates));
+        let hit;
         console.log(coordinates);
+
         if(square.ship === true) {
             const ship = this.findShip(JSON.stringify(coordinates));
             ship.isHit();
@@ -95,11 +97,15 @@ export default class Gameboard{
                 this.reportSink(ship.type);
                 player.sinkShip();
             }
+
+            hit = true;
         } else {
-            // Display a miss
+            hit = false;
         }
 
         square.selected = true;
+
+        return hit;
     }
 }
 

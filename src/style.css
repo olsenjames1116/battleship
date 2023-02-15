@@ -17,3 +17,11 @@ div.grid {
 div#computer > div.grid:hover {
   background-color: gray;
 }
+
+.hit {
+  background-color: red;
+}
+
+.miss {
+  background-color: blue;
+}

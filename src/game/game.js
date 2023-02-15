@@ -26,7 +26,9 @@ export default class Game {
                 const square = computerBoard.getSquareAtIndex(index);
 
                 if(square.selected === false) {
-                    computerBoard.receiveAttack(square.coordinates, computer.type);
+                    const hit = computerBoard.receiveAttack(square.coordinates, computer.type);
+
+                    hit ? grid.classList.add('hit') : grid.classList.add('miss');
                 }
             });
         });
