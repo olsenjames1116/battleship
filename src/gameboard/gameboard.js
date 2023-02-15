@@ -86,19 +86,17 @@ export default class Gameboard{
 
     receiveAttack(coordinates, player) {
         const square = this.findSquare(JSON.stringify(coordinates));
+        console.log(coordinates);
+        if(square.ship === true) {
+            const ship = this.findShip(JSON.stringify(coordinates));
+            ship.isHit();
 
-        if(square.selected === false) {
-            if(square.ship === true) {
-                const ship = this.findShip(JSON.stringify(coordinates));
-                ship.isHit();
-
-                if(ship.isSunk()) {
-                    this.reportSink(ship.type);
-                    player.sinkShip();
-                }
-            } else {
-                // Display a miss
+            if(ship.isSunk()) {
+                this.reportSink(ship.type);
+                player.sinkShip();
             }
+        } else {
+            // Display a miss
         }
 
         square.selected = true;
@@ -107,7 +105,7 @@ export default class Gameboard{
 
 // let globalCoordinate = [];
 
-const gameboard = new Gameboard();
-const array = gameboard.placeShips();
+// const gameboard = new Gameboard();
+// const array = gameboard.placeShips();
 // gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 1]));
 // gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 2]));

@@ -24,7 +24,10 @@ export default class Game {
             grid.addEventListener('click', (event) => {
                 const index = computerGrid.indexOf(event.target);
                 const square = computerBoard.getSquareAtIndex(index);
-                console.log(square);
+
+                if(square.selected === false) {
+                    computerBoard.receiveAttack(square.coordinates, computer.type);
+                }
             });
         });
 
