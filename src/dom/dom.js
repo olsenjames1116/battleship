@@ -32,4 +32,15 @@ export default class Dom {
             });
         });
     }
+
+    displayMove(turnNumber, player) {
+        const move = document.querySelector('p.move');
+
+        if(player === undefined) {
+            move.textContent = 'Launch an attack!';
+        }
+
+        const turn = document.querySelector('p.turn');
+        turn.textContent = `Turn: ${turnNumber}`;
+    }
 }
