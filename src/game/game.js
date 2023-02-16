@@ -18,8 +18,9 @@ export default class Game {
 
         const dom = new Dom();
         dom.loadBoards();
-
         const playerGrid = Array.from(document.querySelectorAll('div#player>div.grid'));
+        dom.displayShips(playerBoard, playerGrid);
+
         const computerGrid = Array.from(document.querySelectorAll('div#computer>div.grid'));
         computerGrid.forEach((grid) => {
             grid.addEventListener('click', (event) => {

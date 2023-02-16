@@ -21,4 +21,15 @@ export default class Dom {
         this.createGrids(playerBoard);
         this.createGrids(computerBoard);
     }
+
+    displayShips(gameboard, grid) {
+        gameboard.ships.forEach((ship) => {
+            console.log(ship.coordinates);
+            ship.coordinates.forEach((coordinate) => {
+                const square = gameboard.findSquare(coordinate);
+                const index = gameboard.findSquareIndex(square);
+                grid[index].classList.add('ship');
+            });
+        });
+    }
 }

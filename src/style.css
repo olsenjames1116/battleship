@@ -18,6 +18,10 @@ div#computer > div.grid:hover {
   background-color: gray;
 }
 
+.ship {
+  background-color: gray;
+}
+
 .hit {
   background-color: red;
 }

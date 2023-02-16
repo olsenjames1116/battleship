@@ -8,7 +8,7 @@ export default class Player {
         this.ships -= 1;
     }
 
-    randomMove(gameboard) {
+    randomMove(gameboard, player) {
         let square;
         let move;
 
@@ -17,7 +17,7 @@ export default class Player {
             square = gameboard.findSquare(JSON.stringify(move));
         } while(square.selected === true)
         
-        const hit = gameboard.receiveAttack(move);
+        const hit = gameboard.receiveAttack(move, player);
 
         return { hit, square };
     }
