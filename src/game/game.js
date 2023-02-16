@@ -8,8 +8,8 @@ export default class Game {
     }
 
     playGame() {
-        const player = new Player('player');
-        const computer = new Player('computer');
+        const player = new Player('Player');
+        const computer = new Player('Computer');
         const playerBoard = new Gameboard();
         const computerBoard = new Gameboard();
 
@@ -35,7 +35,7 @@ export default class Game {
 
                     hit ? grid.classList.add('hit') : grid.classList.add('miss');
 
-                    dom.displayMove(turn, player.type);
+                    dom.displayMove(turn, player.type, hit);
 
                     setTimeout(() => {
                         const computerMove = computer.randomMove(playerBoard, player);
@@ -44,7 +44,7 @@ export default class Game {
                         computerMove.hit ? playerGrid[squareIndex].classList.add('hit') : playerGrid[squareIndex].classList.add('miss');
     
                         turn += 1;
-                        dom.displayMove(turn, computer.type);
+                        dom.displayMove(turn, computer.type, computerMove.hit);
                     }, 2000);
                 }
             });

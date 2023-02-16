@@ -33,11 +33,18 @@ export default class Dom {
         });
     }
 
-    displayMove(turnNumber, player) {
+    displayMove(turnNumber, player, hit) {
         const move = document.querySelector('p.move');
 
         if(player === undefined) {
-            move.textContent = 'Launch an attack!';
+            move.textContent = 'Standing by for fire mission';
+            return;
+        }
+
+        if(hit) {
+            move.textContent = `${player} Fire Mission! Target hit!`;
+        } else {
+            move.textContent = `${player} Fire Mission! Target missed!`;
         }
 
         const turn = document.querySelector('p.turn');
