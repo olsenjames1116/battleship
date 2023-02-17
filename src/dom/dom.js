@@ -24,7 +24,6 @@ export default class Dom {
 
     displayShips(gameboard, grid) {
         gameboard.ships.forEach((ship) => {
-            console.log(ship.coordinates);
             ship.coordinates.forEach((coordinate) => {
                 const square = gameboard.findSquare(coordinate);
                 const index = gameboard.findSquareIndex(square);
@@ -33,7 +32,7 @@ export default class Dom {
         });
     }
 
-    displayMove(turnNumber, player, hit) {
+    displayMove(player, ship, hit) {
         const move = document.querySelector('p.move');
 
         if(player === undefined) {
@@ -41,12 +40,26 @@ export default class Dom {
             return;
         }
 
+        if(ship !== undefined) { 
+            if(ship.isSunk() && player === 'Player') {
+                move.textContent = `Damage Report: Computer's ${ship.type} has been destroyed!`;
+                return;
+            }
+
+            if(ship.isSunk()) {
+                move.textContent = `Damage Report: Player's ${ship.type} has been destroyed!`;
+                return;
+            }
+        }
+
         if(hit) {
             move.textContent = `${player} Fire Mission! Target hit!`;
         } else {
             move.textContent = `${player} Fire Mission! Target missed!`;
         }
+    }
 
+    displayTurn(turnNumber) {
         const turn = document.querySelector('p.turn');
         turn.textContent = `Turn: ${turnNumber}`;
     }

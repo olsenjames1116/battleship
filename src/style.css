@@ -15,7 +15,7 @@ div.grid {
 }
 
 div#computer > div.grid:hover {
-  background-color: gray;
+  background-color: rgb(209, 209, 209);
 }
 
 .ship {

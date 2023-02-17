@@ -17,8 +17,10 @@ export default class Player {
             square = gameboard.findSquare(JSON.stringify(move));
         } while(square.selected === true)
         
-        const hit = gameboard.receiveAttack(move, player);
+        const computerMove = gameboard.receiveAttack(move, player);
+        const hit = computerMove.hit;
+        const ship = computerMove.ship;
 
-        return { hit, square };
+        return { hit, ship, square };
     }
 }

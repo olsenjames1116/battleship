@@ -19,11 +19,13 @@ export default class Game {
         const dom = new Dom();
         dom.loadBoards();
         let turn = 0;
-        dom.displayMove(turn);
+        dom.displayMove();
+        dom.displayTurn(turn);
         const playerGrid = Array.from(document.querySelectorAll('div#player>div.grid'));
         dom.displayShips(playerBoard, playerGrid);
 
         const computerGrid = Array.from(document.querySelectorAll('div#computer>div.grid'));
+        dom.displayShips(computerBoard, computerGrid);
         computerGrid.forEach((grid) => {
             grid.addEventListener('click', (event) => {
                 const index = computerGrid.indexOf(event.target);
@@ -31,11 +33,12 @@ export default class Game {
 
                 if(square.selected === false) {
                     turn += 1;
-                    let hit = computerBoard.receiveAttack(square.coordinates, computer);
+                    const playerMove = computerBoard.receiveAttack(square.coordinates, computer);
 
-                    hit ? grid.classList.add('hit') : grid.classList.add('miss');
+                    playerMove.hit ? grid.classList.add('hit') : grid.classList.add('miss');
 
-                    dom.displayMove(turn, player.type, hit);
+                    dom.displayMove(player.type, playerMove.ship, playerMove.hit);
+                    dom.displayTurn(turn);
 
                     setTimeout(() => {
                         const computerMove = computer.randomMove(playerBoard, player);
@@ -44,8 +47,9 @@ export default class Game {
                         computerMove.hit ? playerGrid[squareIndex].classList.add('hit') : playerGrid[squareIndex].classList.add('miss');
     
                         turn += 1;
-                        dom.displayMove(turn, computer.type, computerMove.hit);
-                    }, 2000);
+                        dom.displayMove(computer.type, computerMove.ship, computerMove.hit);
+                        dom.displayTurn(turn);
+                    }, 3000);
                 }
             });
         });

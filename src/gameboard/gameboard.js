@@ -76,10 +76,6 @@ export default class Gameboard{
         return this.ships.find((ship) => ship.coordinates.includes(coordinates));
     }
 
-    reportSink(shipType) {
-        console.log(`${shipType} has been sunk`);
-    }
-
     getSquareAtIndex(index) {
         return this.squares[index];
     }
@@ -91,15 +87,16 @@ export default class Gameboard{
     receiveAttack(coordinates, player) {
         const square = this.findSquare(JSON.stringify(coordinates));
         let hit;
+        let ship;
         console.log(coordinates);
 
         if(square.ship === true) {
-            const ship = this.findShip(JSON.stringify(coordinates));
+            ship = this.findShip(JSON.stringify(coordinates));
             ship.isHit();
 
             if(ship.isSunk()) {
-                this.reportSink(ship.type);
                 player.sinkShip();
+                // dom.displayMove(player, ship.type, hit);
             }
 
             hit = true;
@@ -109,7 +106,7 @@ export default class Gameboard{
 
         square.selectSquare();
 
-        return hit;
+        return { hit, ship }
     }
 }
 
