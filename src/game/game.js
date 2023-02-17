@@ -5,6 +5,7 @@ import Dom from '../dom/dom.js';
 export default class Game {
     endGame(dom, winner) {
         dom.coverPage();
+        dom.winnerPopup(winner);
     }
 
     playGame() {

@@ -69,4 +69,21 @@ export default class Dom {
         document.querySelector('body').appendChild(pageCover);
         pageCover.classList.add('pageCover');
     }
+
+    winnerPopup(winner) {
+        const popup = document.createElement('div');
+        document.querySelector('body').appendChild(popup);
+        popup.classList.add('popup');
+
+        const popupHeader = document.createElement('h3');
+        popup.appendChild(popupHeader);
+        popupHeader.textContent = `${winner}'s Navy has sank their opponent's fleet. Play again?`;
+
+        const restartButton = document.createElement('button');
+        popup.appendChild(restartButton);
+        restartButton.textContent = 'New Game';
+        restartButton.addEventListener('click', () => {
+            window.location.reload();
+        });
+    }
 }
