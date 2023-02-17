@@ -29,3 +29,14 @@ div#computer > div.grid:hover {
 .miss {
   background-color: blue;
 }
+
+.pageCover {
+  display: block;
+  position: fixed;
+  z-index: 10;
+  background-color: rgba(0, 0, 0, 0.25);
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+}

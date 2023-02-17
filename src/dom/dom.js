@@ -63,4 +63,10 @@ export default class Dom {
         const turn = document.querySelector('p.turn');
         turn.textContent = `Turn: ${turnNumber}`;
     }
+
+    coverPage() {
+        const pageCover = document.createElement('div');
+        document.querySelector('body').appendChild(pageCover);
+        pageCover.classList.add('pageCover');
+    }
 }
