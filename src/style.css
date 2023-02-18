@@ -23,13 +23,13 @@ body {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  font-family: 'sourceCode';
+  font-family: 'sourceCode', sans-serif;
   background: url('./images/background.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 
 div.header {
-  font-family: 'blackOps';
+  font-family: 'blackOps', sans-serif;
   font-size: 2rem;
   -webkit-text-stroke-width: 1px;
   -webkit-text-stroke-color: black;
@@ -143,7 +143,7 @@ button {
   height: 25%;
   background-color: rgb(5, 224, 5);
   border: 0;
-  font-family: 'sourceCode';
+  font-family: 'sourceCode', sans-serif;
   font-weight: bold;
   font-size: 1rem;
 }
