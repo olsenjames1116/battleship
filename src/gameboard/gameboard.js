@@ -66,9 +66,6 @@ export default class Gameboard{
                 ship.coordinates.push(JSON.stringify(square.coordinates));
                 square.addShip();
             }
-
-            // globalCoordinate.push([xCoordinate, yCoordinate]);
-            // globalCoordinate.push([xCoordinate, yCoordinate + 1]);
         });
     }
 
@@ -96,7 +93,6 @@ export default class Gameboard{
 
             if(ship.isSunk()) {
                 player.sinkShip();
-                // dom.displayMove(player, ship.type, hit);
             }
 
             hit = true;
@@ -109,10 +105,3 @@ export default class Gameboard{
         return { hit, ship }
     }
 }
-
-// let globalCoordinate = [];
-
-// const gameboard = new Gameboard();
-// const array = gameboard.placeShips();
-// gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 1]));
-// gameboard.receiveAttack(JSON.stringify(globalCoordinate[globalCoordinate.length - 2]));

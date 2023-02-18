@@ -8,15 +8,28 @@ export default class Dom {
     }
 
     loadBoards() {
+        const playerWrapper = document.createElement('div');
+        playerWrapper.classList.add('wrapper');
         const playerBoard = document.createElement('div');
         playerBoard.classList.add('gameboard');
         playerBoard.id = 'player';
+        const playerLabel = document.createElement('h2');
+        playerLabel.classList.add('label');
+        playerLabel.textContent = 'Player\'s Board';
+        playerWrapper.append(playerLabel, playerBoard);
+
+        const computerWrapper = document.createElement('div');
+        computerWrapper.classList.add('wrapper');
         const computerBoard = document.createElement('div');
         computerBoard.classList.add('gameboard');
         computerBoard.id = 'computer';
-        
+        const computerLabel = document.createElement('h2');
+        computerLabel.classList.add('label');
+        computerLabel.textContent = 'Computer\'s Board';
+        computerWrapper.append(computerLabel, computerBoard);
+
         const content = document.querySelector('div.content');
-        content.append(playerBoard, computerBoard);
+        content.append(playerWrapper, computerWrapper);
 
         this.createGrids(playerBoard);
         this.createGrids(computerBoard);
