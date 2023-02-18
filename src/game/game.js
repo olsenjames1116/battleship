@@ -13,11 +13,15 @@ export default class Game {
         const computer = new Player('Computer');
         const playerBoard = new Gameboard();
         const computerBoard = new Gameboard();
+        const dom = new Dom();
 
-        playerBoard.placeShips();
+        dom.displayPlaceBoard();
+
+        playerBoard.userPlaceShips();
+
+        // playerBoard.placeShips();
         computerBoard.placeShips();
 
-        const dom = new Dom();
         dom.loadBoards();
         let turn = 0;
         dom.displayMove();
@@ -26,7 +30,7 @@ export default class Game {
         dom.displayShips(playerBoard, playerGrid);
 
         const computerGrid = Array.from(document.querySelectorAll('div#computer>div.grid'));
-        dom.displayShips(computerBoard, computerGrid);
+        // dom.displayShips(computerBoard, computerGrid);
         computerGrid.forEach((grid) => {
             grid.addEventListener('click', (event) => {
                 const index = computerGrid.indexOf(event.target);

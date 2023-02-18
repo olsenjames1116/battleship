@@ -82,6 +82,31 @@ div.gameboard {
   height: 500px;
 }
 
+div#place > div.grid:hover {
+  background-color: rgb(68, 68, 255);
+  cursor: url('./images/carrier.resized.png'), auto;
+}
+
+div#place > div.carrier {
+  cursor: url('./images/carrier.resized.png'), auto;
+}
+
+div#place > div.battleship {
+  cursor: url('./images/battleship.resized.png'), auto;
+}
+
+div#place > div.destroyer {
+  cursor: url('./images/destroyer.resized.png'), auto;
+}
+
+div#place > div.submarine {
+  cursor: url('./images/submarine.resized.png'), auto;
+}
+
+div#place > div.patroller {
+  cursor: url('./images/patroller.png'), auto;
+}
+
 div#player {
   grid-area: 2 / 1 / 3 / 2;
 }

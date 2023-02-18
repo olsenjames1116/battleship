@@ -21,7 +21,31 @@ export default class Gameboard{
     }
 
     buildShips() {
-        return [ new Ship(5, 'carrier'), new Ship(4, 'battleship'), new Ship(3, 'cruiser'), new Ship(3, 'submarine'), new Ship(2, 'destroyer') ];
+        return [ new Ship(5, 'carrier'), new Ship(4, 'battleship'), new Ship(3, 'destroyer'), new Ship(3, 'submarine'), new Ship(2, 'patroller') ];
+    }
+
+    userPlaceShips() {
+        for(let i = 0; i < 5; i++) {
+            let direction;
+            const move = document.querySelector('p.move');
+            move.textContent = `Place your ${this.ships[i].type}`;
+            
+            const placeGrid = Array.from(document.querySelectorAll('div#place>div.grid'));
+            placeGrid.forEach((grid) => {
+                grid.addEventListener('hover', (event) => {
+                    event.target.style.width = `${50*this.ships[i].length}px`;
+                });
+
+                grid.addEventListener('click', (event) => {
+                    const index = placeGrid.indexOf(event.target);
+                    const square = this.getSquareAtIndex(index);
+
+                    if(this.checkSquaresAreOccupied(square.coordinates[0], square.coordinates[1], direction, ships[i].length)) {
+                        //Squares are not occupied so place ship
+                    }
+                });
+            });
+        }
     }
 
     findLegalSquares(ship) {

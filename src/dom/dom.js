@@ -7,6 +7,20 @@ export default class Dom {
         }
     }
 
+    displayPlaceBoard() {
+        const gameboard = document.createElement('div');
+        gameboard.classList.add('gameboard');
+        gameboard.id = 'place';
+
+        document.querySelector('div.content').appendChild(gameboard);
+
+        this.createGrids(gameboard);
+
+        const directionButton = document.createElement('button');
+        document.querySelector('div.content').appendChild(directionButton);
+        directionButton.textContent = 'Change orientation';
+    }
+
     loadBoards() {
         const playerWrapper = document.createElement('div');
         playerWrapper.classList.add('wrapper');
