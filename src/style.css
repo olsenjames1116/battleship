@@ -1,33 +1,94 @@
-div.content {
+@font-face {
+  font-family: 'blackOps';
+  src: url('./fonts/blackopsone-regular-webfont.woff2') format('woff2'),
+    url('./fonts/blackopsone-regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'sourceCode';
+  src: url('./fonts/sourcecodepro-variablefont_wght-webfont.woff2')
+      format('woff2'),
+    url('./fonts/sourcecodepro-variablefont_wght-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+* {
+  margin: 0;
+}
+
+body {
+  height: 100vh;
   display: flex;
-  gap: 50px;
+  flex-direction: column;
+  font-family: 'sourceCode';
+  background: url('./images/background.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+
+div.header {
+  font-family: 'blackOps';
+  font-size: 2rem;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: black;
+  display: flex;
+  justify-content: center;
+  color: rgb(203, 200, 200);
+}
+
+div.content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 10px;
+}
+
+div.info {
+  grid-area: 1 / 1 / 2 / 3;
+  font-size: 1.5rem;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: black;
+  color: rgb(5, 224, 5);
+  width: 75%;
 }
 
 div.gameboard {
   display: grid;
+  grid-gap: 1px;
+  border: 5px solid gray;
+  background-color: rgb(68, 68, 255);
   grid-template-columns: repeat(10, 1fr);
   width: 500px;
   height: 500px;
 }
 
+div#player {
+  grid-area: 2 / 1 / 3 / 2;
+}
+
 div.grid {
-  outline: 1px solid black;
+  background-color: rgb(1, 1, 53);
 }
 
 div#computer > div.grid:hover {
-  background-color: rgb(209, 209, 209);
+  background-color: rgb(68, 68, 255);
 }
 
-.ship {
+div#player > div.ship {
   background-color: gray;
 }
 
-.hit {
+div.gameboard > div.hit {
   background-color: red;
 }
 
-.miss {
-  background-color: blue;
+div.gameboard > div.miss {
+  background-color: white;
 }
 
 .pageCover {
@@ -50,4 +111,18 @@ div#computer > div.grid:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   width: 50%;
+}
+
+div.footer {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: white;
+  font-weight: bold;
+}
+
+a {
+  text-decoration: none;
+  color: rgb(5, 224, 5);
 }
