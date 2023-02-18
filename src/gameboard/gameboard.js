@@ -25,27 +25,32 @@ export default class Gameboard{
     }
 
     userPlaceShips() {
-        for(let i = 0; i < 5; i++) {
-            let direction;
-            const move = document.querySelector('p.move');
-            move.textContent = `Place your ${this.ships[i].type}`;
-            
-            const placeGrid = Array.from(document.querySelectorAll('div#place>div.grid'));
-            placeGrid.forEach((grid) => {
-                grid.addEventListener('hover', (event) => {
-                    event.target.style.width = `${50*this.ships[i].length}px`;
-                });
-
-                grid.addEventListener('click', (event) => {
-                    const index = placeGrid.indexOf(event.target);
-                    const square = this.getSquareAtIndex(index);
-
-                    if(this.checkSquaresAreOccupied(square.coordinates[0], square.coordinates[1], direction, ships[i].length)) {
-                        //Squares are not occupied so place ship
-                    }
-                });
+        const shipQueue = this.ships;
+        
+        const placeGrid = Array.from(document.querySelectorAll('div#place>div.grid'));
+        placeGrid.forEach((grid) => {
+            grid.addEventListener('mouseover', (event) => {
+                event.target.classList.add(`${shipQueue[0].type}`);
             });
-        }
+        });
+
+        placeGrid.forEach((grid) => {
+            grid.addEventListener('mouseout', (event) => {
+                event.target.classList.remove(`${shipQueue[0].type}`);
+            });
+        });
+
+        placeGrid.forEach((grid) => {
+            grid.addEventListener('click', (event) => {
+                const index = placeGrid.indexOf(event.target);
+                const square = this.getSquareAtIndex(index);
+    
+                if(!this.checkSquaresAreOccupied(square.coordinates[0], square.coordinates[1], 1, shipQueue[0].length)) {
+                    //Squares are not occupied so place ship
+                    shipQueue.shift();
+                }
+            });
+        });
     }
 
     findLegalSquares(ship) {

@@ -84,7 +84,6 @@ div.gameboard {
 
 div#place > div.grid:hover {
   background-color: rgb(68, 68, 255);
-  cursor: url('./images/carrier.resized.png'), auto;
 }
 
 div#place > div.carrier {
