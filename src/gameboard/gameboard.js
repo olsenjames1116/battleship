@@ -33,7 +33,7 @@ export default class Gameboard{
         const move = document.querySelector('p.move');
         move.textContent = 'Place your carrier (5 spaces)';
 
-        const directionButton = document.querySelector('div#place + button');
+        const directionButton = document.querySelector('div#place + div > button');
         directionButton.addEventListener('click', () => {
             direction = direction === 0 ? 1 : 0;
         });
@@ -48,8 +48,10 @@ export default class Gameboard{
 
         placeGrid.forEach((grid) => {
             grid.addEventListener('mouseout', (event) => {
-                if(direction === 0) event.target.classList.remove(`${shipQueue[0].type}Rotated`);
-                if(direction === 1) event.target.classList.remove(`${shipQueue[0].type}`);
+                if(shipQueue.length > 0) {                
+                    if(direction === 0) event.target.classList.remove(`${shipQueue[0].type}Rotated`);
+                    if(direction === 1) event.target.classList.remove(`${shipQueue[0].type}`);
+                }            
             });
         });
 

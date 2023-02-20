@@ -126,6 +126,16 @@ div#place > div.patrollerRotated {
   cursor: url('./images/patroller.rotated.png'), auto;
 }
 
+div#place + div {
+  display: flex;
+  align-items: center;
+}
+
+div#place + div > button {
+  height: 100px;
+  width: max-content;
+}
+
 div#player {
   grid-area: 2 / 1 / 3 / 2;
 }
@@ -182,14 +192,17 @@ div.gameboard > div.miss {
 }
 
 button {
-  margin-top: auto;
-  width: 25%;
-  height: 25%;
   background-color: rgb(5, 224, 5);
   border: 0;
   font-family: 'sourceCode', sans-serif;
   font-weight: bold;
   font-size: 1rem;
+}
+
+div.popup > button {
+  margin-top: auto;
+  width: 25%;
+  height: 25%;
 }
 
 button:hover {

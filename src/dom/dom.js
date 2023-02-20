@@ -16,8 +16,10 @@ export default class Dom {
 
         this.createGrids(gameboard);
 
+        const buttonDiv = document.createElement('div');
         const directionButton = document.createElement('button');
-        document.querySelector('div.content').appendChild(directionButton);
+        buttonDiv.appendChild(directionButton);
+        document.querySelector('div.content').appendChild(buttonDiv);
         directionButton.textContent = 'Change orientation';
     }
 
@@ -25,8 +27,8 @@ export default class Dom {
         const placeBoard = document.querySelector('div#place');
         placeBoard.style.display = 'none';
 
-        const directionButton = document.querySelector('div#place + button');
-        directionButton.style.display = 'none';
+        const buttonDiv = document.querySelector('div#place + div');
+        buttonDiv.style.display = 'none';
     }
 
     loadBoards() {
