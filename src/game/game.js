@@ -8,18 +8,12 @@ export default class Game {
         dom.winnerPopup(winner);
     }
 
-    playGame() {
+    playGame(placeBoard, dom) {
         const player = new Player('Player');
         const computer = new Player('Computer');
-        const playerBoard = new Gameboard();
         const computerBoard = new Gameboard();
-        const dom = new Dom();
 
-        dom.displayPlaceBoard();
-
-        playerBoard.userPlaceShips();
-
-        // playerBoard.placeShips();
+        const playerBoard = placeBoard;
         computerBoard.placeShips();
 
         dom.loadBoards();

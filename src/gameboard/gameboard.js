@@ -1,6 +1,7 @@
 import Square from '../square/square.js';
 import Ship from '../ship/ship.js';
 import Dom from '../dom/dom.js';
+import Game from '../game/game.js';
 
 export default class Gameboard{
     constructor() {
@@ -26,7 +27,7 @@ export default class Gameboard{
     }
 
     userPlaceShips() {
-        const shipQueue = this.ships;
+        const shipQueue = [...this.ships];
         const dom = new Dom();
         let direction = 1;
 
@@ -64,6 +65,12 @@ export default class Gameboard{
                     }
                     dom.displayShips(this, placeGrid);
                     shipQueue.shift();
+
+                    if(shipQueue.length === 0) {
+                        dom.hidePlacement();
+                        const game = new Game();
+                        game.playGame(this, dom);
+                    }
                 }
             });
         });

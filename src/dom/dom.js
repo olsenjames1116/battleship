@@ -21,6 +21,14 @@ export default class Dom {
         directionButton.textContent = 'Change orientation';
     }
 
+    hidePlacement() {
+        const placeBoard = document.querySelector('div#place');
+        placeBoard.style.display = 'none';
+
+        const directionButton = document.querySelector('div#place + button');
+        directionButton.style.display = 'none';
+    }
+
     loadBoards() {
         const playerWrapper = document.createElement('div');
         playerWrapper.classList.add('wrapper');

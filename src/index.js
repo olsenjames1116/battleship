@@ -1,5 +1,10 @@
 import './style.css';
-import Game from './game/game.js';
+import Dom from './dom/dom.js';
+import Gameboard from './gameboard/gameboard.js';
 
-const game = new Game();
-game.playGame();
+const dom = new Dom();
+const playerBoard = new Gameboard();
+
+dom.displayPlaceBoard();
+
+playerBoard.userPlaceShips(dom);
