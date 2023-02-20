@@ -32,7 +32,7 @@ export default class Gameboard{
 
         const directionButton = document.querySelector('div#place + button');
         directionButton.addEventListener('click', () => {
-            direction = 0;
+            direction = direction === 0 ? 1 : 0;
         });
         
         const placeGrid = Array.from(document.querySelectorAll('div#place>div.grid'));
@@ -55,14 +55,12 @@ export default class Gameboard{
                 const index = placeGrid.indexOf(event.target);
                 let square = this.getSquareAtIndex(index);
     
-                if(!this.checkSquaresAreOccupied(square.coordinates[0], square.coordinates[1], 1, shipQueue[0].length)) {
-                    //Squares are not occupied so place ship
+                if(!this.checkSquaresAreOccupied(square.coordinates[0], square.coordinates[1], direction, shipQueue[0].length)) {
                     const ship = shipQueue[0];
                     for(let i = 0; i < ship.length; i++) {
-                        // const square = direction === 0 ? this.findSquare(`[${xCoordinate},${yCoordinate + i}]`) : this.findSquare(`[${xCoordinate + i},${yCoordinate}]`);
                         ship.coordinates.push(JSON.stringify(square.coordinates));
                         square.addShip();
-                        square = this.findSquare(`[${square.coordinates[0] + 1},${square.coordinates[1]}]`);
+                        square = direction === 0 ? this.findSquare(`[${square.coordinates[0]},${square.coordinates[1] + 1}]`) : this.findSquare(`[${square.coordinates[0] + 1},${square.coordinates[1]}]`);
                     }
                     dom.displayShips(this, placeGrid);
                     shipQueue.shift();
