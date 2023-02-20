@@ -1,5 +1,6 @@
 import Square from '../square/square.js';
 import Ship from '../ship/ship.js';
+import Dom from '../dom/dom.js';
 
 export default class Gameboard{
     constructor() {
@@ -11,7 +12,7 @@ export default class Gameboard{
         const board = [];
         for(let i = 0; i < 10; i++) {
             for(let j = 0; j < 10; j++) {
-                const square = new Square([i, j]);
+                const square = new Square([j, i]);
 
                 board.push(square);
             }
@@ -26,6 +27,7 @@ export default class Gameboard{
 
     userPlaceShips() {
         const shipQueue = this.ships;
+        const dom = new Dom();
         
         const placeGrid = Array.from(document.querySelectorAll('div#place>div.grid'));
         placeGrid.forEach((grid) => {
@@ -43,10 +45,18 @@ export default class Gameboard{
         placeGrid.forEach((grid) => {
             grid.addEventListener('click', (event) => {
                 const index = placeGrid.indexOf(event.target);
-                const square = this.getSquareAtIndex(index);
+                let square = this.getSquareAtIndex(index);
     
                 if(!this.checkSquaresAreOccupied(square.coordinates[0], square.coordinates[1], 1, shipQueue[0].length)) {
                     //Squares are not occupied so place ship
+                    const ship = shipQueue[0];
+                    for(let i = 0; i < ship.length; i++) {
+                        // const square = direction === 0 ? this.findSquare(`[${xCoordinate},${yCoordinate + i}]`) : this.findSquare(`[${xCoordinate + i},${yCoordinate}]`);
+                        ship.coordinates.push(JSON.stringify(square.coordinates));
+                        square.addShip();
+                        square = this.findSquare(`[${square.coordinates[0] + 1},${square.coordinates[1]}]`);
+                    }
+                    dom.displayShips(this, placeGrid);
                     shipQueue.shift();
                 }
             });
