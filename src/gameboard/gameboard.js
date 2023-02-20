@@ -28,17 +28,25 @@ export default class Gameboard{
     userPlaceShips() {
         const shipQueue = this.ships;
         const dom = new Dom();
+        let direction = 1;
+
+        const directionButton = document.querySelector('div#place + button');
+        directionButton.addEventListener('click', () => {
+            direction = 0;
+        });
         
         const placeGrid = Array.from(document.querySelectorAll('div#place>div.grid'));
         placeGrid.forEach((grid) => {
             grid.addEventListener('mouseover', (event) => {
-                event.target.classList.add(`${shipQueue[0].type}`);
+                if(direction === 0) event.target.classList.add(`${shipQueue[0].type}Rotated`);
+                if(direction === 1) event.target.classList.add(`${shipQueue[0].type}`);
             });
         });
 
         placeGrid.forEach((grid) => {
             grid.addEventListener('mouseout', (event) => {
-                event.target.classList.remove(`${shipQueue[0].type}`);
+                if(direction === 0) event.target.classList.remove(`${shipQueue[0].type}Rotated`);
+                if(direction === 1) event.target.classList.remove(`${shipQueue[0].type}`);
             });
         });
 

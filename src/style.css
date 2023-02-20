@@ -87,23 +87,43 @@ div#place > div.grid:hover {
 }
 
 div#place > div.carrier {
-  cursor: url('./images/carrier.resized.png'), auto;
+  cursor: url('./images/carrier.png'), auto;
+}
+
+div#place > div.carrierRotated {
+  cursor: url('./images/carrier.rotated.png'), auto;
 }
 
 div#place > div.battleship {
-  cursor: url('./images/battleship.resized.png'), auto;
+  cursor: url('./images/battleship.png'), auto;
+}
+
+div#place > div.battleshipRotated {
+  cursor: url('./images/battleship.rotated.png'), auto;
 }
 
 div#place > div.destroyer {
-  cursor: url('./images/destroyer.resized.png'), auto;
+  cursor: url('./images/destroyer.png'), auto;
+}
+
+div#place > div.destroyerRotated {
+  cursor: url('./images/destroyer.rotated.png'), auto;
 }
 
 div#place > div.submarine {
-  cursor: url('./images/submarine.resized.png'), auto;
+  cursor: url('./images/submarine.png'), auto;
+}
+
+div#place > div.submarineRotated {
+  cursor: url('./images/submarine.rotated.png'), auto;
 }
 
 div#place > div.patroller {
   cursor: url('./images/patroller.png'), auto;
+}
+
+div#place > div.patrollerRotated {
+  cursor: url('./images/patroller.rotated.png'), auto;
 }
 
 div#player {
