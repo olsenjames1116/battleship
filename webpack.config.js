@@ -1,33 +1,31 @@
 const path = require('path');
 
 module.exports = {
-mode: 'development',
-devServer: {
+  mode: 'development',
+  devServer: {
     static: './dist',
-},
-devtool: 'inline-source-map',
-entry: './src/index.js',
-output: {
+  },
+  devtool: 'inline-source-map',
+  entry: './src/index.js',
+  output: {
     filename: 'main.js',
     path: path.resolve(__dirname, 'dist'),
-},
-module: {
+  },
+  module: {
     rules: [
-    {
+      {
         test: /\.css$/i,
         use: ['style-loader', 'css-loader'],
-    },
-    {
+      },
+      {
         test: /\.m?js$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',
           options: {
-            presets: [
-              ['@babel/preset-env', { targets: "defaults" }]
-            ]
-          }
-        }
+            presets: [['@babel/preset-env', { targets: 'defaults' }]],
+          },
+        },
       },
       {
         test: /\.(png|svg|jpg|jpeg|gif)$/i,
@@ -37,10 +35,10 @@ module: {
         test: /\.(woff|woff2|eot|ttf|otf)$/i,
         type: 'asset/resource',
       },
-			{
+      {
         test: /\.mp3$/,
-        use: 'file-loader'
-      }
+        use: 'file-loader',
+      },
     ],
-},
+  },
 };
