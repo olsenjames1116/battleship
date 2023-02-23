@@ -1,4 +1,6 @@
+// Creates a DOM object with methods to manipulate the DOM
 export default class Dom {
+    // Creates the grids to display on gameboards
     createGrids(board) {
         for(let i = 0; i<100; i++) {
             const gridSquare = document.createElement('div');
@@ -7,6 +9,7 @@ export default class Dom {
         }
     }
 
+    // Displays the placement board for the user to place their ships
     displayPlaceBoard() {
         const gameboard = document.createElement('div');
         gameboard.classList.add('gameboard');
@@ -23,6 +26,7 @@ export default class Dom {
         directionButton.textContent = 'Change Direction';
     }
 
+    // Hide the placement board after all ships have been placed
     hidePlacement() {
         const placeBoard = document.querySelector('div#place');
         placeBoard.style.display = 'none';
@@ -31,6 +35,7 @@ export default class Dom {
         buttonDiv.style.display = 'none';
     }
 
+    // Display the player's and computer's gameboards
     loadBoards() {
         const playerWrapper = document.createElement('div');
         playerWrapper.classList.add('wrapper');
@@ -59,6 +64,7 @@ export default class Dom {
         this.createGrids(computerBoard);
     }
 
+    // Display a ship on the gameboard after is has been placed by the user
     displayShips(gameboard, grid) {
         gameboard.ships.forEach((ship) => {
             ship.coordinates.forEach((coordinate) => {
@@ -69,9 +75,11 @@ export default class Dom {
         });
     }
 
+    // Displays the result of the previous move to indicate whose turn it is
     displayMove(player, ship, hit) {
         const move = document.querySelector('p.move');
 
+        // Displays the initial message
         if(player === undefined) {
             move.textContent = 'Standing by for fire mission';
             return;
@@ -96,17 +104,20 @@ export default class Dom {
         }
     }
 
+    // Displays which turn number it is
     displayTurn(turnNumber) {
         const turn = document.querySelector('p.turn');
         turn.textContent = `Turn: ${turnNumber}`;
     }
 
+    // Covers the page before the popup to block webpage interaction
     coverPage() {
         const pageCover = document.createElement('div');
         document.querySelector('body').appendChild(pageCover);
         pageCover.classList.add('pageCover');
     }
 
+    // Displays the winner and allows for a new game
     winnerPopup(winner) {
         const popup = document.createElement('div');
         document.querySelector('body').appendChild(popup);
@@ -119,6 +130,7 @@ export default class Dom {
         const restartButton = document.createElement('button');
         popup.appendChild(restartButton);
         restartButton.textContent = 'New Game';
+        // Reloads a webpage to start a new game
         restartButton.addEventListener('click', () => {
             window.location.reload();
         });
