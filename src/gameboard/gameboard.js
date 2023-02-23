@@ -68,8 +68,8 @@ export default class Gameboard{
                         square = direction === 0 ? this.findSquare(`[${square.coordinates[0]},${square.coordinates[1] + 1}]`) : this.findSquare(`[${square.coordinates[0] + 1},${square.coordinates[1]}]`);
                     }
                     dom.displayShips(this, placeGrid);
-                    move.textContent = `Place your ${shipQueue[0].type} (${shipQueue[0].length} spaces)`;
                     shipQueue.shift();
+                    if(shipQueue.length!==0) move.textContent = `Place your ${shipQueue[0].type} (${shipQueue[0].length} spaces)`;
 
                     if(shipQueue.length === 0) {
                         dom.hidePlacement();

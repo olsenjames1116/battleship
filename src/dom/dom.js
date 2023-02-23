@@ -20,7 +20,7 @@ export default class Dom {
         const directionButton = document.createElement('button');
         buttonDiv.appendChild(directionButton);
         document.querySelector('div.content').appendChild(buttonDiv);
-        directionButton.textContent = 'Change orientation';
+        directionButton.textContent = 'Change Direction';
     }
 
     hidePlacement() {
